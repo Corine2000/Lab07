@@ -11,11 +11,11 @@ public class TestModel {
 		System.out.println(tuttiNerc);
         
 		Nerc nerc = tuttiNerc.get(3);
-		List<PowerOutages> soluzione = model.risolvi(nerc, 4, 1000);
+		List<PowerOutages> soluzione = model.risolvi(nerc, 2, 30);
 		  System.out.println(soluzione.size());
 		
 		for(PowerOutages p: soluzione)
-		  System.out.println(p.toString());
+		 System.out.println(p.toString());
 	}
 
 }

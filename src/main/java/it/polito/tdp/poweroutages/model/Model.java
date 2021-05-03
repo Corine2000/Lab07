@@ -41,7 +41,7 @@ public class Model {
 			return false;
 		
 		int differenzaAnni = (int) diffAnni( parziale);
-		int totOre = (int) SommaOre( parziale);
+		int totOre = (int) SommaOre(parziale);
 		int totClienti = TotCustomers(parziale);
 		
 		if(differenzaAnni > x)
@@ -57,25 +57,25 @@ public class Model {
 			return true;
 		}
 		
-		 parziale.add(powerOutages.get(livello));
-		  cerca(parziale, nerc, x, y, livello+1);
+		// parziale.add(powerOutages.get(livello));
+		//  cerca(parziale, nerc, x, y, livello+1);
 		 
-		 parziale.remove(powerOutages.get(livello));
-		   cerca(parziale, nerc, x, y, livello+1);
+		// parziale.remove(powerOutages.get(livello));
+		 //  cerca(parziale, nerc, x, y, livello+1);
 		 
-			/*for(int i=0; i<powerOutages.size(); i++) {
+			for(int i=0; i<powerOutages.size(); i++) {
 				PowerOutages p = powerOutages.get(i);
 				   if(p.getNerc_id()==nerc.getId()) { //prendo tutti i powerOutages che hanno lo stesso nerc inserito dall'utente
 				      if(!parziale.contains(p)) {
 					     parziale.add(p);
 					
-					boolean trovato = cerca(parziale, nerc, x, y, livello+1);
+					  cerca(parziale, nerc, x, y, livello+1);
 					   //if(trovato)
 						  // return true;
 					    parziale.remove(p);
 				}
 			}
-		} */
+		} 
 			return false;
 	}
 
@@ -86,9 +86,9 @@ public class Model {
 	public long diffAnni(List<PowerOutages> parziale) { 
 		long diff=0;
 		if(parziale.size()>0) {
-		LocalDateTime data1= parziale.get(0).getDataInizio();
-		LocalDateTime data2= parziale.get(parziale.size()-1).getDataInizio();
-		diff = ChronoUnit.YEARS.between(data1, data2);
+			LocalDateTime data1= parziale.get(0).getDataInizio();
+			LocalDateTime data2= parziale.get(parziale.size()-1).getDataInizio();
+			diff = ChronoUnit.YEARS.between(data1, data2) + 1;
 		}
 		return diff;
 	}
@@ -116,6 +116,7 @@ public class Model {
 				tot+= p.getCustomers_affected();
 			 }
 		}
+		
 		return tot;
 	}
 }
